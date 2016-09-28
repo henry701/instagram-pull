@@ -1,5 +1,5 @@
 <?php
-function Get_Fotos_Recentes()
+function Get_Fotos_Recentes($username)
 {
 	$curr_dir = realpath(dirname(__FILE__));
 	
@@ -20,7 +20,7 @@ function Get_Fotos_Recentes()
 	*/
 	 
 	$handle = curl_init();
-	curl_setopt($handle,CURLOPT_URL,"https://www.instagram.com/carrierigastropub/media/");
+	curl_setopt($handle,CURLOPT_URL,"https://www.instagram.com/$username/media/");
 	curl_setopt($handle,CURLOPT_FORBID_REUSE,TRUE);
 	curl_setopt($handle,CURLOPT_FRESH_CONNECT,TRUE);
 	// curl_setopt($handle,CURLOPT_POST,TRUE); // Habilitar POST
