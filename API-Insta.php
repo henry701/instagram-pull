@@ -84,4 +84,24 @@ function Get_Fotos_Recentes($username)
 	
 	return $decoded_data;
 }
-?>
+
+function GetCorrectMTime($filePath) 
+{ 
+    $time = filemtime($filePath); 
+
+    $isDST = (date('I', $time) == 1); 
+    $systemDST = (date('I') == 1); 
+
+    $adjustment = 0; 
+
+    if($isDST == false && $systemDST == true) 
+        $adjustment = 3600; 
+    
+    else if($isDST == true && $systemDST == false) 
+        $adjustment = -3600; 
+
+    else 
+        $adjustment = 0; 
+
+    return ($time + $adjustment); 
+}
